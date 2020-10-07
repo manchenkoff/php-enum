@@ -18,12 +18,12 @@ abstract class Enum
     /**
      * @var string Value name
      */
-    private $name;
+    private string $name;
 
     /**
      * @var string Value title or description
      */
-    private $title;
+    private string $title;
 
     protected function __construct($value, string $name, string $title)
     {
@@ -32,7 +32,7 @@ abstract class Enum
         $this->title = $title;
     }
 
-    public static function __callStatic(string $name, array $arguments)
+    public static function __callStatic(string $name, array $arguments): Enum
     {
         $reflectionClass = new ReflectionClass(static::class);
 
@@ -101,7 +101,7 @@ abstract class Enum
         return $this->title;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->value;
     }
